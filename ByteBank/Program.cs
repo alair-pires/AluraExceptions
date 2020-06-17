@@ -12,6 +12,15 @@ namespace ByteBank
         {
             try
             {
+                ContaCorrente conta = new ContaCorrente(456, 0);
+            }
+            catch(ArgumentException ex)
+            {
+                Console.WriteLine("Argumento com problema: "+ex.ParamName);
+                Console.WriteLine(ex.Message);
+            }
+            try
+            {
                 Metodo();
             }
             catch (DivideByZeroException excecao)
