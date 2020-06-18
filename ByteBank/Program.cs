@@ -12,12 +12,24 @@ namespace ByteBank
         {
             try
             {
-                ContaCorrente conta = new ContaCorrente(456, 0);
+                ContaCorrente conta = new ContaCorrente(456, 546879);
+                conta.Depositar(50);
+                Console.WriteLine(conta.Saldo);
+                conta.Sacar(500);
             }
             catch(ArgumentException ex)
             {
+                if (ex.ParamName == "numero")
+                {
+
+                }
                 Console.WriteLine("Argumento com problema: "+ex.ParamName);
                 Console.WriteLine(ex.Message);
+            }
+            catch (SaldoInsuficienteException ex)
+            {
+                Console.WriteLine(ex.Message);
+                Console.WriteLine("Exceção de saldo insuficiente");
             }
             try
             {
@@ -25,6 +37,7 @@ namespace ByteBank
             }
             catch (DivideByZeroException excecao)
             {
+                Console.WriteLine(excecao.Message);
                 Console.WriteLine("Não é possível divisão por 0!");
             }
             catch (Exception excecao)
