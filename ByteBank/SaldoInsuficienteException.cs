@@ -24,5 +24,10 @@ namespace ByteBank
         {
             
         }
+
+        public SaldoInsuficienteException(string mensagem, Exception excecaoInterna)
+        {
+
+        }
     }
 }

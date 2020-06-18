@@ -7,9 +7,10 @@ namespace ByteBank
     public class ContaCorrente
     {
         private static int TaxaOperacao;
-        public Cliente Titular { get; set; }
 
         public static int TotalDeContasCriadas { get; private set; }
+
+        public Cliente Titular { get; set; }
 
         public int ContadorSaqueNaoPermitidos { get; private set; }
         public int ContadorTransferenciasNaoPermitidas { get; private set; }
@@ -46,6 +47,7 @@ namespace ByteBank
             Numero = numero;
 
             TotalDeContasCriadas++;
+            TaxaOperacao = 30 / TotalDeContasCriadas;
             
         }
 
@@ -62,7 +64,6 @@ namespace ByteBank
             }
 
             _saldo -= valor;
-            //return true;
         }
 
         public void Depositar(double valor)
