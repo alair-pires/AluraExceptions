@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.IO;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -9,7 +10,39 @@ namespace ByteBank
     class Program
     {
         static void Main(string[] args)
-        {            
+        {
+            try
+            {
+                CarregarContas();
+            }
+            catch (Exception)
+            {
+                Console.WriteLine("Catch no metodo main");
+            }
+        }
+
+        private static void CarregarContas()
+        {
+            using(LeitorDeArquivo leitor = new LeitorDeArquivo("texte.txt"))
+            {
+                leitor.LerProximaLinha();
+            } 
+            //LeitorDeArquivo leitor = null;
+            //try
+            //{
+            //    leitor = new LeitorDeArquivo("contas.txt");
+
+            //    leitor.LerProximaLinha();
+            //}
+            //finally
+            //{
+            //    Console.WriteLine("Executando o finally");
+            //    if(leitor != null) leitor.Fechar();
+            //}
+        }
+
+        private static void TestaInnerException()
+        {
             try
             {
                 ContaCorrente conta1 = new ContaCorrente(4564, 789684);
@@ -32,7 +65,7 @@ namespace ByteBank
             Console.WriteLine("Execução finalizada. Tecle enter para sair");
             Console.ReadLine();
         }
-        
+
         public static int Dividir(int numero, int divisor)
         {
             try
